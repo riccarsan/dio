@@ -9,7 +9,7 @@ import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
 public class SpeechToText {
     public static void main(String[] args) {
         try {
-            String speechKey = "7DprcMDfne2xHS73ezOjCGWI89WPCDv9ZRq0OJFvC4gCDTynlCm6JQQJ99BIACYeBjFXJ3w3AAAYACOGij3b";
+            String speechKey = "";
             String serviceRegion = "eastus";
 
             SpeechConfig config = SpeechConfig.fromSubscription(speechKey, serviceRegion);
@@ -33,3 +33,4 @@ public class SpeechToText {
         }
     }
 }
+
