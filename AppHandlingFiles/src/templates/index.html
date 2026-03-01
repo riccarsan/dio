@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .result { margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .valid { color: green; font-weight: bold; }
+        .invalid { color: red; font-weight: bold; }
+        .generic { color: gray; font-weight: bold;}
+    </style>
+</head>
+<body>
+    <h2>Upload de Passaporte (Imagem)</h2>
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="imagem" accept=".png,.jpg,.jpeg" required>
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    {% if image_url %}
+        <h3>Imagem enviada:</h3>
+        <img src="{{ image_url }}" alt="Imagem Enviada" style="max-width: 400px;"><br>
+
+        <h3>Resultado da validação:</h3>
+        {% if passport_info and passport_info.passport_name %}
+            <h2 class="generic">Passaporte Analisado</h2>
+            <p><strong>Nome:</strong> {{ passport_info.passport_name }}</p>
+            <p><strong>Número do Passaporte:</strong> {{ passport_info.document_number }}</p>
+            <p><strong>Nacionalidade:</strong> {{ passport_info.country_name }}</p>
+            <p><strong>Data de emissão:</strong> {{ passport_info.issue_date }}</p>
+            <p><strong>Data de validade:</strong> {{ passport_info.expiry_date }}</p>
+            <p><strong>Expirado:</strong> {{ 'Sim' if passport_info.expired else 'Não' }}</p>
+            <p><strong>Status do Passaporte:</strong>
+                {% if passport_info.is_valid %}
+                    <span class="valid">Válido</span>
+                {% else %}
+                    <span class="invalid">Inválido</span>
+                {% endif %}
+            </p>
+
+            {% if passport_info.expired %}
+                <p class="invalid">⚠️ Passaporte vencido</p>
+            {% else %}
+                <p class="valid">✅ Passaporte dentro da validade</p>
+            {% endif %}
+        {% else %}
+            <h2 class="invalid">Passaporte Inválido</h2>
+            <p>Este não é um passaporte válido.</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
