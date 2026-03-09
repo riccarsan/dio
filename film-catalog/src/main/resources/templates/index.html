@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Catalog</title>
+</head>
+
+<body>
+
+<h2>Cadastrar Filme</h2>
+
+<input type="text" id="titulo" placeholder="Título"><br><br>
+
+<textarea id="descricao" placeholder="Descrição"></textarea><br><br>
+
+<textarea id="detalhes" placeholder="Detalhes"></textarea><br><br>
+
+<input type="file" id="thumbnail"><br><br>
+
+<input type="file" id="video"><br><br>
+
+<button onclick="uploadMovie()">Salvar</button>
+
+<hr>
+
+<h2>Catálogo</h2>
+
+<button onclick="listarFilmes()">Listar Filmes</button>
+
+<ul id="lista"></ul>
+
+<script>
+
+const API_BASE = "https://apim-zubizanga.azure-api.net/film-catalog-20260308103022732";
+const API_KEY = "SUA_KEY";
+
+async function uploadMovie(){
+
+const videoFile=document.getElementById("video").files[0]
+const thumbFile=document.getElementById("thumbnail").files[0]
+
+if(!videoFile||!thumbFile){
+alert("Selecione vídeo e thumbnail")
+return
+}
+
+const id=Date.now().toString()
+
+// upload video
+await fetch(`${API_BASE}/videos/${videoFile.name}`,{
+method:"POST",
+headers:{
+"Ocp-Apim-Subscription-Key":API_KEY
+},
+body:videoFile
+})
+
+// upload thumbnail
+await fetch(`${API_BASE}/thumbnails/${thumbFile.name}`,{
+method:"POST",
+headers:{
+"Ocp-Apim-Subscription-Key":API_KEY
+},
+body:thumbFile
+})
+
+// registrar filme
+const payload={
+id:id,
+titulo:document.getElementById("titulo").value,
+descricao:document.getElementById("descricao").value,
+video:videoFile.name,
+thumb:thumbFile.name,
+detalhes:document.getElementById("detalhes").value,
+tipo:"Filme"
+}
+
+await fetch(`${API_BASE}/movies`,{
+method:"POST",
+headers:{
+"Content-Type":"application/json",
+"Ocp-Apim-Subscription-Key":API_KEY
+},
+body:JSON.stringify(payload)
+})
+
+alert("Filme cadastrado!")
+
+}
+
+async function listarFilmes(){
+
+const response=await fetch(`${API_BASE}/movies`,{
+headers:{
+"Ocp-Apim-Subscription-Key":API_KEY
+}
+})
+
+const filmes=await response.json()
+
+const lista=document.getElementById("lista")
+lista.innerHTML=""
+
+filmes.forEach(f=>{
+
+const li=document.createElement("li")
+li.innerText=f.titulo+" - "+(f.descricao||"")
+
+lista.appendChild(li)
+
+})
+
+}
+
+</script>
+
+</body>
+</html>
