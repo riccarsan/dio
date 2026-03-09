@@ -1,0 +1,11 @@
+C:\workspace_processos_seletivos\stocks-manager\src\main\java\br\com\riccar\config\SwaggerConfig.java
+C:\workspace_processos_seletivos\stocks-manager\src\main\java\br\com\riccar\controller\StockController.java
+C:\workspace_processos_seletivos\stocks-manager\src\main\java\br\com\riccar\exception\handler\StockAlreadyExistException.java
+C:\workspace_processos_seletivos\stocks-manager\src\main\java\br\com\riccar\exception\StockNotFoundException.java
+C:\workspace_processos_seletivos\stocks-manager\src\main\java\br\com\riccar\model\Stock.java
+C:\workspace_processos_seletivos\stocks-manager\src\main\java\br\com\riccar\repository\StockRepository.java
+C:\workspace_processos_seletivos\stocks-manager\src\main\java\br\com\riccar\service\DTO\StockDTO.java
+C:\workspace_processos_seletivos\stocks-manager\src\main\java\br\com\riccar\service\impl\StockServiceImpl.java
+C:\workspace_processos_seletivos\stocks-manager\src\main\java\br\com\riccar\service\mapper\StockMapper.java
+C:\workspace_processos_seletivos\stocks-manager\src\main\java\br\com\riccar\service\StockService.java
+C:\workspace_processos_seletivos\stocks-manager\src\main\java\br\com\riccar\StocksManagerApplication.java

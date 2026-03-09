@@ -1,0 +1,11 @@
+br\com\riccar\service\impl\StockServiceImpl.class
+br\com\riccar\controller\StockController.class
+br\com\riccar\config\SwaggerConfig.class
+br\com\riccar\exception\handler\StockAlreadyExistException.class
+br\com\riccar\model\Stock.class
+br\com\riccar\StocksManagerApplication.class
+br\com\riccar\repository\StockRepository.class
+br\com\riccar\exception\StockNotFoundException.class
+br\com\riccar\service\DTO\StockDTO.class
+br\com\riccar\service\StockService.class
+br\com\riccar\service\mapper\StockMapper.class

@@ -1,0 +1,27 @@
+# ---------- STAGE 1: BUILD ----------
+FROM maven:3.9.9-eclipse-temurin-21 AS builder
+
+WORKDIR /app
+
+# copiar pom primeiro (cache do docker)
+COPY pom.xml .
+
+RUN mvn -B -q -e -DskipTests dependency:go-offline
+
+# copiar código
+COPY src ./src
+
+# build do jar
+RUN mvn clean package -DskipTests
+
+# ---------- STAGE 2: RUNTIME ----------
+FROM eclipse-temurin:21-jdk-jammy
+
+WORKDIR /app
+
+# copiar apenas o jar gerado
+COPY --from=builder /app/target/*.jar app.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java","-Xms256m","-Xmx512m","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar"]

@@ -1,0 +1,11 @@
+INSERT INTO stock (id, name, price, date_purchase) VALUES(1, 'HBRE3', 150.0, '2025-05-24');
+INSERT INTO stock (id, name, price, date_purchase) VALUES(2, 'GRND3', 120.0, '2025-05-25');
+INSERT INTO stock (id, name, price, date_purchase) VALUES(3, 'MELK3',  90.0, '2025-06-13');
+INSERT INTO stock (id, name, price, date_purchase) VALUES(4, 'RIAA3', 130.0, '2025-01-20');
+INSERT INTO stock (id, name, price, date_purchase) VALUES(5, 'GEPA4', 180.0, '2025-10-19');
+INSERT INTO stock (id, name, price, date_purchase) VALUES(6, 'UNIP6', 110.0, '2025-12-07');
+INSERT INTO stock (id, name, price, date_purchase) VALUES(7, 'POMO4', 155.0, '2025-02-05');
+INSERT INTO stock (id, name, price, date_purchase) VALUES(8, 'FIQE3', 290.0, '2025-03-26');
+INSERT INTO stock (id, name, price, date_purchase) VALUES(9, 'TIMP3', 190.0, '2025-11-04');
+INSERT INTO stock (id, name, price, date_purchase) VALUES(10,'OIBR4', 150.0, '2025-08-09');
+INSERT INTO stock (id, name, price, date_purchase) VALUES(11,'MNPR3', 230.0, '2025-03-17');
